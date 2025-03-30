@@ -1,14 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5el11dc5spcf"]
+[gd_scene load_steps=12 format=3 uid="uid://c5el11dc5spcf"]
 
 [ext_resource type="Script" uid="uid://blotx4dndfxsl" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://cnhfs11t7xcm1" path="res://scenes/letter/letter.tscn" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://b5e6j2xi16q3e" path="res://scenes/health_ui/health_ui.tscn" id="3_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green_background.tscn" id="3_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://cc721hqvne6hq" path="res://scenes/camera/camera.tscn" id="3_bdhmt"]
 [ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="3_kelw5"]
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="4_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://bg7tbifsmppm5" path="res://scenes/tiles/sprites/tile_green.png" id="8_87uf6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i0tg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdhmt"]
 bg_color = Color(0.486275, 0.988235, 0.611765, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bdhmt"]
+noise_type = 0
+seed = 10
+frequency = 0.0095
 
 [sub_resource type="FontVariation" id="FontVariation_5i0tg"]
 base_font = ExtResource("4_lfrn8")
@@ -16,13 +23,32 @@ variation_opentype = {
 2003265652: 700
 }
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("game_camera")]
 script = ExtResource("1_sul5r")
 letter_scene = ExtResource("2_7h61r")
+game_camera = NodePath("GameCamera")
 initial_letter_interval = 4.0
 
-[node name="GreenBackground" parent="." instance=ExtResource("3_5i0tg")]
-theme_override_styles/panel = SubResource("StyleBoxFlat_5i0tg")
+[node name="GameBackground" parent="." instance=ExtResource("3_5i0tg")]
+unique_name_in_owner = true
+offset_left = -47.0
+offset_top = -31.0
+offset_right = 28.0
+offset_bottom = 34.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdhmt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_87uf6")
+stretch_mode = 1
+
+[node name="GameCamera" parent="." instance=ExtResource("3_bdhmt")]
+unique_name_in_owner = true
+shake_noise = SubResource("FastNoiseLite_bdhmt")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

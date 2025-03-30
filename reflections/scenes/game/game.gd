@@ -4,13 +4,13 @@ extends Node
 # Difficulty curve: Exponential Decay Formula (Smooth Decrease)
 # Equation: T_n = T_min + (T_max - T_min) * exp(-k * n)
 
-
 @onready var next_letter_timer: Timer = %NextLetterTimer
 @onready var letters_container: Node = %LettersContainer
 @onready var score_label: Label = %ScoreLabel
 @onready var total_spawned_label: Label = %TotalSpawnedLabel
 
 @export var letter_scene: PackedScene
+@export var game_camera: GameCamera
 
 @export var initial_letter_interval: float = 2.0
 @export var difficulty_factor: float = 0.025
@@ -94,6 +94,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				_create_next_letter()
 				_start_new_timer()
 			else:
+				game_camera.shake(100)
 				current_letter.destroy(false)
 				incorrect_letters.append({
 					"letter": current_letter.letter_text,
