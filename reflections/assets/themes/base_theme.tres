@@ -1,8 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://3epe1etkbtt2"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://3epe1etkbtt2"]
 
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="1_7mchg"]
+[ext_resource type="FontFile" uid="uid://ck2uyfym3wcqc" path="res://assets/fonts/Barriecito-Regular.ttf" id="2_ty7gv"]
 
 [resource]
 default_font = ExtResource("1_7mchg")
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("2_ty7gv")
 Label/colors/font_color = Color(0.2, 0.176471, 0.247059, 1)
 Label/fonts/font = ExtResource("1_7mchg")
+TitleLabel/base_type = &"Label"
+TitleLabel/fonts/font = ExtResource("2_ty7gv")

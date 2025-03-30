@@ -13,6 +13,7 @@ const MAXY_Y: float = 720
 var letter_text: String
 var letter_destruct_time: float
 var time_left: float 
+var destroyed: bool = false
 
 const SAFE_BUFFER: int = 128
 
@@ -63,6 +64,12 @@ func _on_destruct_timeout() -> void:
 	
 	
 func destroy(correct: bool) -> void:
+	
+	if destroyed:
+		return
+	
+	destroyed = true
+	
 	if animation_player.is_playing():
 		animation_player.stop()
 		

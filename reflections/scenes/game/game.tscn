@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blotx4dndfxsl" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://cnhfs11t7xcm1" path="res://scenes/letter/letter.tscn" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://b5e6j2xi16q3e" path="res://scenes/health_ui/health_ui.tscn" id="3_0sr1o"]
-[ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green.tscn" id="3_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green_background.tscn" id="3_5i0tg"]
 [ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="3_kelw5"]
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="4_lfrn8"]
 
@@ -16,8 +16,9 @@ variation_opentype = {
 [node name="Game" type="Node"]
 script = ExtResource("1_sul5r")
 letter_scene = ExtResource("2_7h61r")
+initial_letter_interval = 4.0
 
-[node name="Background" parent="." instance=ExtResource("3_5i0tg")]
+[node name="GreenBackground" parent="." instance=ExtResource("3_5i0tg")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

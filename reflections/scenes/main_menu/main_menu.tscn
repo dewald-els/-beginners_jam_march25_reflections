@@ -1,21 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3afwas4v778r"]
+[gd_scene load_steps=8 format=3 uid="uid://d3afwas4v778r"]
 
 [ext_resource type="Script" uid="uid://2b0446cne36e" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="2_0ebjn"]
 [ext_resource type="PackedScene" uid="uid://c5el11dc5spcf" path="res://scenes/game/game.tscn" id="2_uqeha"]
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="3_ob46e"]
-[ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green.tscn" id="3_wem23"]
+[ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green_background.tscn" id="3_wem23"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wem23"]
-bg_color = Color(0.929412, 0.431373, 0.435294, 1)
+bg_color = Color(0.2, 0.176471, 0.247059, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_uqeha"]
-base_font = ExtResource("3_ob46e")
-variation_opentype = {
-2003265652: 700
-}
-
-[sub_resource type="FontVariation" id="FontVariation_ob46e"]
 base_font = ExtResource("3_ob46e")
 variation_opentype = {
 2003265652: 700
@@ -25,7 +19,8 @@ variation_opentype = {
 script = ExtResource("1_fsom3")
 main_game_scene = ExtResource("2_uqeha")
 
-[node name="Panel" parent="." instance=ExtResource("3_wem23")]
+[node name="GreenBackground" parent="." instance=ExtResource("3_wem23")]
+colour = 7
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -51,12 +46,26 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("2_0ebjn")
-theme_override_fonts/font = SubResource("FontVariation_uqeha")
+theme_type_variation = &"TitleLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
-text = "Letters!"
+text = "Letters & Numbers!"
+horizontal_alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_0ebjn")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_uqeha")
+theme_override_font_sizes/font_size = 32
+text = "Type as quick as you can"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -65,11 +74,12 @@ theme_override_constants/separation = 32
 [node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_ob46e")
+theme = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 32
 text = "Play now"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_0ebjn")
 text = "Quit"
