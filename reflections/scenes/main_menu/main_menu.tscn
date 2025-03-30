@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3afwas4v778r"]
+[gd_scene load_steps=9 format=3 uid="uid://d3afwas4v778r"]
 
 [ext_resource type="Script" uid="uid://2b0446cne36e" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="2_0ebjn"]
 [ext_resource type="PackedScene" uid="uid://c5el11dc5spcf" path="res://scenes/game/game.tscn" id="2_uqeha"]
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="3_ob46e"]
 [ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green_background.tscn" id="3_wem23"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ovsr"]
+bg_color = Color(0.2, 0.176471, 0.247059, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wem23"]
 bg_color = Color(0.2, 0.176471, 0.247059, 1)
@@ -20,6 +23,7 @@ script = ExtResource("1_fsom3")
 main_game_scene = ExtResource("2_uqeha")
 
 [node name="GreenBackground" parent="." instance=ExtResource("3_wem23")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ovsr")
 colour = 7
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

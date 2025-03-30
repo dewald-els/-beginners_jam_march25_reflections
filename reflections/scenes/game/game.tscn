@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5el11dc5spcf"]
+[gd_scene load_steps=9 format=3 uid="uid://c5el11dc5spcf"]
 
 [ext_resource type="Script" uid="uid://blotx4dndfxsl" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://cnhfs11t7xcm1" path="res://scenes/letter/letter.tscn" id="2_7h61r"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green_background.tscn" id="3_5i0tg"]
 [ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="3_kelw5"]
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="4_lfrn8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i0tg"]
+bg_color = Color(0.486275, 0.988235, 0.611765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_5i0tg"]
 base_font = ExtResource("4_lfrn8")
@@ -19,6 +22,7 @@ letter_scene = ExtResource("2_7h61r")
 initial_letter_interval = 4.0
 
 [node name="GreenBackground" parent="." instance=ExtResource("3_5i0tg")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i0tg")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
