@@ -23,8 +23,6 @@ func _ready() -> void:
 		print("Letter values not correctly set: ", letter_text, letter_destruct_time)
 		return 
 	
-	
-	print("Letter values set: ", letter_text, letter_destruct_time)
 	letter_label.text = letter_text
 	global_position = _get_random_position()
 	_setup_destruct_timer()
@@ -54,7 +52,6 @@ func _get_random_position() -> Vector2:
 		min(x, MAX_X - SAFE_BUFFER),
 		min(y, MAXY_Y - SAFE_BUFFER)
 	)
-	print("Created random position: ", random_position)
 	return random_position
 	
 	

@@ -24,6 +24,9 @@ var current_letter: Letter
 var score: int = 0
 var is_dead:bool = false
 
+var correct_letters: Array[Dictionary] = []
+var incorrect_letters: Array[Dictionary] = []
+
 func _ready() -> void:
 	
 	SignalBus.health_empty.connect(_on_health_empty)
@@ -80,6 +83,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _valid_keycode_entered(keycode):
 			var typed_letter: String = char(keycode)
 			if typed_letter == current_letter.letter_text:
+				correct_letters.append({
+					"letter": current_letter.letter_text,
+					"time_left": next_letter_timer.time_left
+				})
 				score += 1
 				score_label.text = "Score: " + str(score)
 				current_letter.destroy(true)
@@ -88,7 +95,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				_start_new_timer()
 			else:
 				current_letter.destroy(false)
-				next_letter_timer.timeout.emit()
+				incorrect_letters.append({
+					"letter": current_letter.letter_text,
+					"time_left": next_letter_timer.time_left
+				})
+				_on_next_letter_timeout()
 			
 
 func _valid_keycode_entered(keycode: int) -> bool:
