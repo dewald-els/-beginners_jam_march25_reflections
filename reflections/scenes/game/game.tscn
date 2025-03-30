@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5el11dc5spcf"]
+
+[ext_resource type="Script" uid="uid://blotx4dndfxsl" path="res://scenes/game/game.gd" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://cnhfs11t7xcm1" path="res://scenes/letter/letter.tscn" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://b5e6j2xi16q3e" path="res://scenes/health_ui/health_ui.tscn" id="3_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green.tscn" id="3_5i0tg"]
+[ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="3_kelw5"]
+[ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="4_lfrn8"]
+
+[sub_resource type="FontVariation" id="FontVariation_5i0tg"]
+base_font = ExtResource("4_lfrn8")
+variation_opentype = {
+2003265652: 700
+}
+
+[node name="Game" type="Node"]
+script = ExtResource("1_sul5r")
+letter_scene = ExtResource("2_7h61r")
+
+[node name="Background" parent="." instance=ExtResource("3_5i0tg")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HudMarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HudMarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainerHeader" type="HBoxContainer" parent="HUD/HudMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="HUD/HudMarginContainer/VBoxContainer/HBoxContainerHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_kelw5")
+theme_override_fonts/font = SubResource("FontVariation_5i0tg")
+theme_override_font_sizes/font_size = 28
+text = "Score: 0"
+
+[node name="HealthUI" parent="HUD/HudMarginContainer/VBoxContainer/HBoxContainerHeader" instance=ExtResource("3_0sr1o")]
+layout_mode = 2
+
+[node name="HBoxContainerFooter" type="HBoxContainer" parent="HUD/HudMarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TotalSpawnedLabel" type="Label" parent="HUD/HudMarginContainer/VBoxContainer/HBoxContainerFooter"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_kelw5")
+text = "Letters: 0"
+
+[node name="NextLetterTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="LettersContainer" type="Node" parent="."]
+unique_name_in_owner = true

@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3afwas4v778r"]
+
+[ext_resource type="Script" uid="uid://2b0446cne36e" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+[ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="2_0ebjn"]
+[ext_resource type="PackedScene" uid="uid://c5el11dc5spcf" path="res://scenes/game/game.tscn" id="2_uqeha"]
+[ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="3_ob46e"]
+[ext_resource type="PackedScene" uid="uid://bv4io1auum1mr" path="res://scenes/backgrounds/green.tscn" id="3_wem23"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wem23"]
+bg_color = Color(0.929412, 0.431373, 0.435294, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_uqeha"]
+base_font = ExtResource("3_ob46e")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_ob46e"]
+base_font = ExtResource("3_ob46e")
+variation_opentype = {
+2003265652: 700
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_fsom3")
+main_game_scene = ExtResource("2_uqeha")
+
+[node name="Panel" parent="." instance=ExtResource("3_wem23")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wem23")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0ebjn")
+theme_override_fonts/font = SubResource("FontVariation_uqeha")
+theme_override_font_sizes/font_size = 64
+text = "Letters!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_ob46e")
+theme_override_font_sizes/font_size = 32
+text = "Play now"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"

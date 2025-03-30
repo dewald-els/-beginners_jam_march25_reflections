@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnhfs11t7xcm1"]
+
+[ext_resource type="Script" uid="uid://bbq57fnkbc2tf" path="res://scenes/letter/letter.gd" id="1_aq5pr"]
+[ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="2_2mfh2"]
+[ext_resource type="Texture2D" uid="uid://byrujpgfpcc1q" path="res://scenes/letter/sprites/circular_progress_under.png" id="2_2qmmw"]
+[ext_resource type="Texture2D" uid="uid://d30odcnwv4xo0" path="res://scenes/letter/sprites/circular_progress_full.png" id="2_k7hw5"]
+[ext_resource type="Texture2D" uid="uid://dbfdf4kmgaq7l" path="res://scenes/letter/sprites/circular_progress_over.png" id="3_2mfh2"]
+[ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="3_r85un"]
+
+[sub_resource type="FontVariation" id="FontVariation_dcf8v"]
+base_font = ExtResource("3_r85un")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="Animation" id="Animation_k7hw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetterLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-31.5, -66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LetterLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vybn4"]
+resource_name = "float_in"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetterLabel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-31.5, 60), Vector2(-31.5, -66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LetterLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2qmmw"]
+resource_name = "float_out"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetterLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-31.5, -66), Vector2(-31.5, -90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LetterLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aq5pr"]
+resource_name = "shake"
+length = 0.1
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetterLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-56.5, -66), Vector2(32.5, -66), Vector2(-55.5, -66), Vector2(-31.5, -66)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7hw5"]
+_data = {
+&"RESET": SubResource("Animation_k7hw5"),
+&"float_in": SubResource("Animation_vybn4"),
+&"float_out": SubResource("Animation_2qmmw"),
+&"shake": SubResource("Animation_aq5pr")
+}
+
+[node name="Letter" type="Node2D"]
+script = ExtResource("1_aq5pr")
+
+[node name="LetterLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -66.0
+offset_right = 31.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2mfh2")
+theme_override_fonts/font = SubResource("FontVariation_dcf8v")
+theme_override_font_sizes/font_size = 96
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DestructTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_k7hw5")
+}
+autoplay = "float_in"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 43.0
+offset_top = -64.0
+offset_right = 107.0
+step = 10.0
+value = 60.0
+fill_mode = 5
+texture_under = ExtResource("2_2qmmw")
+texture_over = ExtResource("3_2mfh2")
+texture_progress = ExtResource("2_k7hw5")

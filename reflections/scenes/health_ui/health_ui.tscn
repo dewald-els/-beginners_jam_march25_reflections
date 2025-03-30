@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5e6j2xi16q3e"]
+
+[ext_resource type="PackedScene" uid="uid://bg8irt6geutt8" path="res://scenes/health_heart/health_heart.tscn" id="1_fy2jd"]
+[ext_resource type="Script" uid="uid://s2fupbth844l" path="res://scenes/health_ui/health_ui.gd" id="1_sf1ts"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sf1ts"]
+
+[node name="HealthUI" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sf1ts")
+script = ExtResource("1_sf1ts")
+
+[node name="HealthHeartsHBox" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Health" parent="HealthHeartsHBox" instance=ExtResource("1_fy2jd")]
+layout_mode = 2
+
+[node name="Health2" parent="HealthHeartsHBox" instance=ExtResource("1_fy2jd")]
+layout_mode = 2
+
+[node name="Health3" parent="HealthHeartsHBox" instance=ExtResource("1_fy2jd")]
+layout_mode = 2
+
+[node name="Health4" parent="HealthHeartsHBox" instance=ExtResource("1_fy2jd")]
+layout_mode = 2
+
+[node name="Health5" parent="HealthHeartsHBox" instance=ExtResource("1_fy2jd")]
+layout_mode = 2
