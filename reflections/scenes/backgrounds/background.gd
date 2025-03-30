@@ -25,8 +25,6 @@ enum Colours {
 	Black
 }
 
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
-
 @export var colour: Colours = Colours.Green
 
 func _ready() -> void:

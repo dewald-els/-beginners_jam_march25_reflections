@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="4_lfrn8"]
 [ext_resource type="Texture2D" uid="uid://bg7tbifsmppm5" path="res://scenes/tiles/sprites/tile_green.png" id="8_87uf6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdhmt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87uf6"]
 bg_color = Color(0.486275, 0.988235, 0.611765, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bdhmt"]
@@ -35,7 +35,7 @@ offset_left = -47.0
 offset_top = -31.0
 offset_right = 28.0
 offset_bottom = 34.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bdhmt")
+theme_override_styles/panel = SubResource("StyleBoxFlat_87uf6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
