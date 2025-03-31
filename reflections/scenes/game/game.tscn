@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5el11dc5spcf"]
+[gd_scene load_steps=13 format=3 uid="uid://c5el11dc5spcf"]
 
 [ext_resource type="Script" uid="uid://blotx4dndfxsl" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://cnhfs11t7xcm1" path="res://scenes/letter/letter.tscn" id="2_7h61r"]
@@ -8,8 +8,9 @@
 [ext_resource type="Theme" uid="uid://3epe1etkbtt2" path="res://assets/themes/base_theme.tres" id="3_kelw5"]
 [ext_resource type="FontFile" uid="uid://dk53ru1bo0a5f" path="res://assets/fonts/RobotoMono-VariableFont_wght.ttf" id="4_lfrn8"]
 [ext_resource type="Texture2D" uid="uid://bg7tbifsmppm5" path="res://scenes/tiles/sprites/tile_green.png" id="8_87uf6"]
+[ext_resource type="PackedScene" uid="uid://dyw2agch1w57v" path="res://scenes/reflection/reflection_scene.tscn" id="9_2a8rs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87uf6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
 bg_color = Color(0.486275, 0.988235, 0.611765, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bdhmt"]
@@ -35,7 +36,7 @@ offset_left = -47.0
 offset_top = -31.0
 offset_right = 28.0
 offset_bottom = 34.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_87uf6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2a8rs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -98,3 +99,6 @@ one_shot = true
 
 [node name="LettersContainer" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="ReflectionScene" parent="." instance=ExtResource("9_2a8rs")]
+position = Vector2(1144, 365)

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfsf1jgpg7rnk"]
+
+[ext_resource type="Script" uid="uid://it00koskmqk3" path="res://scenes/reflection/balloons/balloons.gd" id="1_244in"]
+[ext_resource type="PackedScene" uid="uid://btybd0wbopy81" path="res://scenes/balloon/balloon.tscn" id="1_peysm"]
+[ext_resource type="Texture2D" uid="uid://npr3rqghywh1" path="res://scenes/reflection/temp_man.png" id="2_244in"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_244in"]
+radius = 20.025
+
+[node name="Balloons" type="RigidBody2D"]
+mass = 5.05
+script = ExtResource("1_244in")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+shape = SubResource("CircleShape2D_244in")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 15)
+texture = ExtResource("2_244in")
+
+[node name="PinkBalloon" parent="." instance=ExtResource("1_peysm")]
+unique_name_in_owner = true
+position = Vector2(-29, -115)
+gravity_scale = -0.5
+balloon_colour = 0
+
+[node name="BlueBalloon" parent="." instance=ExtResource("1_peysm")]
+unique_name_in_owner = true
+position = Vector2(-94, -202)
+rotation = -0.206564
+gravity_scale = -0.5
+
+[node name="YellowBalloon" parent="." instance=ExtResource("1_peysm")]
+unique_name_in_owner = true
+position = Vector2(-17, -271)
+gravity_scale = -0.5
+balloon_colour = 2
+
+[node name="RedBalloon" parent="." instance=ExtResource("1_peysm")]
+unique_name_in_owner = true
+position = Vector2(61, -251)
+rotation = 0.0793008
+gravity_scale = -0.5
+balloon_colour = 3
+
+[node name="PurpleBalloon" parent="." instance=ExtResource("1_peysm")]
+unique_name_in_owner = true
+position = Vector2(71, -127)
+rotation = 0.121345
+gravity_scale = -0.5
+balloon_colour = 4

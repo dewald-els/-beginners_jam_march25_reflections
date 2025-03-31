@@ -75,6 +75,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if is_dead:
 		return
+	
+	if not current_letter:
+		return
 		
 	if event is InputEventKey and event.pressed:
 		
@@ -100,6 +103,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					"letter": current_letter.letter_text,
 					"time_left": next_letter_timer.time_left
 				})
+				await get_tree().create_timer(0.5).timeout
 				_on_next_letter_timeout()
 			
 
@@ -117,7 +121,11 @@ func _on_next_letter_timeout() -> void:
 	
 func _on_health_empty() -> void:
 	print("Dead")
+
 	is_dead = true
-	current_letter.destroy(true)
+
+	if current_letter:
+		current_letter.destroy(true)
+		
 	next_letter_timer.paused = true
 	

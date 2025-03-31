@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bq2h6kqnmvono" path="res://scenes/backgrounds/background.gd" id="1_ym55g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdtfk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym55g"]
 bg_color = Color(0.486275, 0.988235, 0.611765, 1)
 
 [node name="Background" type="Panel"]
@@ -11,5 +11,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hdtfk")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ym55g")
 script = ExtResource("1_ym55g")

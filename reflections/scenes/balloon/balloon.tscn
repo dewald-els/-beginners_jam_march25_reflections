@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://btybd0wbopy81"]
+
+[ext_resource type="Script" uid="uid://d00orjqvu0ill" path="res://scenes/balloon/balloon.gd" id="1_o0te0"]
+[ext_resource type="Texture2D" uid="uid://c62yexu0ypk68" path="res://scenes/balloon/sprites/pink_balloon.png" id="2_cmo8e"]
+[ext_resource type="Texture2D" uid="uid://rbe3hgu0wci" path="res://scenes/balloon/sprites/blue_balloon.png" id="3_2m0c2"]
+[ext_resource type="Texture2D" uid="uid://csny4kgy7dubl" path="res://scenes/balloon/sprites/yellow_balloon.png" id="4_apqvc"]
+[ext_resource type="Texture2D" uid="uid://n2pejfj4eama" path="res://scenes/balloon/sprites/red_balloon.png" id="5_alia0"]
+[ext_resource type="Texture2D" uid="uid://c5iqss3idfeou" path="res://scenes/balloon/sprites/purple_balloon.png" id="6_vkryg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o0te0"]
+radius = 30.0
+height = 98.0
+
+[node name="Balloon" type="RigidBody2D"]
+script = ExtResource("1_o0te0")
+pink_balloon = ExtResource("2_cmo8e")
+blue_balloon = ExtResource("3_2m0c2")
+yellow_balloon = ExtResource("4_apqvc")
+red_balloon = ExtResource("5_alia0")
+purple_balloon = ExtResource("6_vkryg")
+balloon_colour = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -8)
+shape = SubResource("CapsuleShape2D_o0te0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_cmo8e")
+region_rect = Rect2(0, 0, 128, 128)

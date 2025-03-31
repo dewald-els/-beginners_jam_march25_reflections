@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyw2agch1w57v"]
+
+[ext_resource type="PackedScene" uid="uid://dfsf1jgpg7rnk" path="res://scenes/reflection/balloons/balloons.tscn" id="1_ak00n"]
+
+[node name="ReflectionScene" type="Node2D"]
+
+[node name="Character" type="Node2D" parent="."]
+
+[node name="Balloons" parent="Character" instance=ExtResource("1_ak00n")]
