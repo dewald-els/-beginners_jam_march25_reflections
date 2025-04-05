@@ -26,6 +26,8 @@ var is_dead:bool = false
 
 var correct_letters: Array[Dictionary] = []
 var incorrect_letters: Array[Dictionary] = []
+var is_spawing_new_letter: bool = false
+var is_handling_input: bool = false
 
 func _ready() -> void:
 	
@@ -36,19 +38,26 @@ func _ready() -> void:
 	
 	current_letter_interval = initial_letter_interval
 	
-	_create_next_letter()
-	_start_new_timer()
+	_next()
 
 
 func _get_next_letter() -> String:
 	randomize()
 	return SOURCE_TEXT[randi() % SOURCE_TEXT.size()]
 
+func _next() -> void:
+	if is_spawing_new_letter:
+		return
+		
+	is_spawing_new_letter = true
+	_create_next_letter()
+	_start_new_timer()
+	is_spawing_new_letter = false
 
 func _create_next_letter() -> void:
 	if is_dead: 
 		return
-		
+	
 	var random_letter: String = _get_next_letter()
 	var letter_instance: Letter = letter_scene.instantiate()
 	letter_instance.letter_destruct_time = current_letter_interval
@@ -70,6 +79,9 @@ func _start_new_timer() -> void:
 
 	
 func _unhandled_input(event: InputEvent) -> void:
+	if is_handling_input:
+		return 
+		
 	if next_letter_timer.is_stopped():
 		return
 		
@@ -78,8 +90,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if not current_letter:
 		return
-		
+			
 	if event is InputEventKey and event.pressed:
+		is_handling_input = true
 		
 		var keycode:int = event.keycode
 		
@@ -94,8 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				score_label.text = "Score: " + str(score)
 				current_letter.destroy(true)
 				next_letter_timer.stop()
-				_create_next_letter()
-				_start_new_timer()
+				_next()
 			else:
 				game_camera.shake(100)
 				current_letter.destroy(false)
@@ -105,7 +117,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				})
 				await get_tree().create_timer(0.5).timeout
 				_on_next_letter_timeout()
-			
+		
+		is_handling_input = false
+
 
 func _valid_keycode_entered(keycode: int) -> bool:
 	return (keycode >= KEY_A and keycode <= KEY_Z) or (keycode >= KEY_0 and keycode <= KEY_9)
@@ -116,8 +130,7 @@ func _on_next_letter_timeout() -> void:
 		return
 		
 	SignalBus.incorrect_input.emit()
-	_create_next_letter()
-	_start_new_timer()
+	_next()
 	
 func _on_health_empty() -> void:
 	print("Dead")
